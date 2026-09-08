@@ -5,3 +5,6 @@
 DerivedData/
 Support/Info.plist
 build/
+
+# Code-signing private key — never commit
+Scripts/signing/*.key
