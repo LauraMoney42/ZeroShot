@@ -1,6 +1,6 @@
 # ZeroShot
 
-A small, native macOS screenshot tool in the spirit of Greenshot. Press **Cmd+0**, pick a region with Apple's own picker, and an editor window opens where you crop, draw shapes, add text, and drop auto-numbered badges (1, 2, 3...) for documentation. Result goes to the clipboard and a folder.
+A small, native macOS screenshot tool in the spirit of Greenshot. Press **Cmd+0** for a full-screen grab of whichever display you're on, or **Cmd+1** to pick a region with Apple's own picker, and an editor window opens where you crop, draw shapes, add text, and drop auto-numbered badges (1, 2, 3...) for documentation. Result goes to the clipboard and a folder.
 
 Status: **milestones 1 to 6 built**, 97 unit tests passing, Debug and Release both build clean. `Scripts/build-release.sh` installs to /Applications and was run once end to end (launch, pgrep, codesign check all passed). Not yet exercised with a real Cmd+0 capture; that needs the Screen Recording permission prompt answered by a person.
 
@@ -11,7 +11,7 @@ Status: **milestones 1 to 6 built**, 97 unit tests passing, Debug and Release bo
 | Stack | Native Swift: SwiftUI chrome + one AppKit canvas view | Smallest app, best OS integration, no web runtime |
 | Capture UI | Shell out to `/usr/sbin/screencapture -i` | Apple's crosshair, Space for window mode, Esc to cancel, multi-monitor, all free |
 | Editor | Separate editor window (Greenshot style) | Simplest, reliable, easy undo/redo and text entry |
-| Hotkey | Cmd+0 (changeable in Preferences) | User choice. Note: overrides "Actual Size" in browsers and editors while ZeroShot runs |
+| Hotkey | Cmd+0 full screen, Cmd+1 region (both changeable in Preferences) | User choice. Note: shadows "Actual Size" (Cmd+0) and often "first tab" (Cmd+1) in browsers while ZeroShot runs |
 | Output | Clipboard + PNG in default folder; Greenshot-style destination menu for other folders | Paste right away, keep a file for later |
 | Tools | Select, Crop, Rectangle, Ellipse (outline only), Arrow, Line, Text, Number badge, Highlighter, Blur/pixelate, Freehand pen | All requested |
 | Min macOS | 15.0 | Dev machine is 26.3, Xcode 26.2. 15 keeps modern SwiftUI without excluding older Macs |
@@ -21,8 +21,8 @@ Status: **milestones 1 to 6 built**, 97 unit tests passing, Debug and Release bo
 
 ## User flow
 
-1. App sits in the menu bar. Menu: Capture Region (Cmd+0), Capture Window, Capture Full Screen, Capture with 5s delay, Open Last Screenshot, Preferences, Quit.
-2. Cmd+0 runs `screencapture -i -x -t png <tmp.png>`. If the file does not appear, the user pressed Esc: do nothing.
+1. App sits in the menu bar. Menu: Capture Full Screen (Cmd+0), Capture Region (Cmd+1), Capture Window, Capture with 5s delay, Open Last Screenshot, Preferences, Quit.
+2. Cmd+0 grabs the display under the mouse pointer directly (no picker). Cmd+1 runs `screencapture -i -x -t png <tmp.png>`; if the file does not appear, the user pressed Esc: do nothing.
 3. Editor window opens with the image. Toolbar across the top, small inspector strip for color, stroke width, font size, badge color.
 4. User annotates. Number tool: each click drops the next number (1, 2, 3...). Counter resets for every new capture.
 5. **Done** (Cmd+Return): flatten, copy PNG to clipboard, save PNG to default folder, close window.
@@ -147,7 +147,7 @@ Text: while editing, an `NSTextView` overlay sits on the canvas. On commit it be
 
 - Region: `screencapture -i -x -t png <tmp>`. Space switches to window mode inside Apple's picker.
 - Window: `screencapture -i -W -x -t png <tmp>` (starts in window mode).
-- Full screen: `screencapture -x -t png <tmp>` (all displays; pick main display first, multi-display later if wanted).
+- Full screen: not `screencapture` at all. ScreenCaptureKit's `SCScreenshotManager.captureImage`, targeting whichever display currently holds the mouse pointer (`CaptureService.currentDisplayID()`), written to the temp PNG ourselves. Chosen over `screencapture -D` because that flag's display numbering is not reliably documented across macOS versions; `CGDisplayCreateImage` (the older one-call way to do this) is unavailable on the macOS 26 SDK.
 - Delayed: `-T 5`.
 - Cancel detection: no file at the tmp path, a zero-byte file, or a non-zero exit status.
 - Temp files live in `$TMPDIR/ZeroShot/capture-<uuid>.png`.
@@ -155,7 +155,7 @@ Text: while editing, an `NSTextView` overlay sits on the canvas. On commit it be
 
 ### Hotkey
 
-Carbon `RegisterEventHotKey` for Cmd+0. Works from a menu bar app without Accessibility or Input Monitoring permission. Preferences has a recorder field to change it.
+Carbon `RegisterEventHotKey`, registered twice: Cmd+0 for full screen, Cmd+1 for region (`HotkeyManager.Slot`). Works from a menu bar app without Accessibility or Input Monitoring permission. Preferences has one recorder field per slot to change either.
 
 ### Export
 
@@ -171,7 +171,7 @@ Destinations (Greenshot-style):
 
 V select, C crop, R rectangle, E ellipse, A arrow, L line, T text, N number, H highlighter, B blur, P pen.
 Delete removes selection. Cmd+Z / Shift+Cmd+Z undo/redo. Cmd+A selects all. Arrow keys nudge the selection 1 px, Shift+arrow 10 px. Cmd+C copies flattened image. Cmd+S saves to default folder. Cmd+Return Done. Esc deselects, then closes.
-Zoom: Cmd+1 actual size (one image pixel per screen pixel), Cmd+9 fit to window, Cmd+plus / Cmd+minus step. Cmd+0 is deliberately NOT a zoom shortcut because it is the global capture hotkey.
+Zoom: Cmd+2 actual size (one image pixel per screen pixel), Cmd+9 fit to window, Cmd+plus / Cmd+minus step. Cmd+0 and Cmd+1 are deliberately NOT zoom shortcuts because they are the two global capture hotkeys (full screen, region) and fire from anywhere, including while this window is key.
 Shift constrains shapes to squares/circles and arrows to 45 degree steps.
 
 ## Milestones
@@ -194,11 +194,11 @@ schedule so the later milestones can be worked on in parallel.
 
 ## Risks and how they are handled
 
-1. **Cmd+0 conflict.** Browsers and editors use Cmd+0 for Actual Size. While ZeroShot runs, that shortcut becomes a screenshot. Preferences lets you change it in 10 seconds.
+1. **Cmd+0 / Cmd+1 conflicts.** Browsers and editors use Cmd+0 for Actual Size and often Cmd+1 for the first tab. While ZeroShot runs, both become screenshots. Preferences lets you rebind either in 10 seconds.
 2. **Screen Recording permission re-prompts.** Caused by unstable code signing across rebuilds. Sign with the Apple Development team from the iOS build recipe, or a fixed ad-hoc identity.
 3. **Retina scale mistakes.** Export tests assert 2x output for 2x input.
 4. **Text editing in a custom canvas.** Solved with an NSTextView overlay during editing, not by drawing an editable text field ourselves.
-5. **Multi-display full screen.** Apple's `-i` picker already handles multiple displays. Non-interactive full-screen capture of every display is a later addition if wanted.
+5. **Multi-display full screen.** Resolved: Cmd+0 captures whichever single display currently has the mouse pointer (`CaptureService.currentDisplayID()`), rather than every display at once. Apple's `-i` picker (Cmd+1) still handles multiple displays for region/window capture.
 
 ## Out of scope for v1
 

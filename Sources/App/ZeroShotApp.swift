@@ -34,12 +34,13 @@ struct MenuBarContent: View {
         // track it; SwiftUI installs the observation scope around body.
         let state = AppState.shared
 
-        Button("Capture Region") { state.capture(.region) }
+        Button("Capture Full Screen") { state.capture(.fullScreen) }
             .keyboardShortcut("0", modifiers: .command)
 
-        Button("Capture Window") { state.capture(.window) }
+        Button("Capture Region") { state.capture(.region) }
+            .keyboardShortcut("1", modifiers: .command)
 
-        Button("Capture Full Screen") { state.capture(.fullScreen) }
+        Button("Capture Window") { state.capture(.window) }
 
         Button("Capture in 5 Seconds") { state.capture(.region, delay: 5) }
 
@@ -159,14 +160,17 @@ final class AppState {
         WindowActivation.bringToFront(preferencesController?.window)
     }
 
-    /// Re-registers the global hotkey with a new binding and persists it
+    /// Re-registers `slot`'s global hotkey with a new binding and persists it
     /// (`HotkeyManager.register` writes the UserDefaults keys itself). Used by
-    /// the Preferences hotkey recorder so a change takes effect immediately.
+    /// the Preferences hotkey recorders so a change takes effect immediately.
     @discardableResult
-    func reregisterHotkey(keyCode: UInt32, modifiers: UInt32) -> Bool {
-        HotkeyManager.shared.register(keyCode: keyCode, modifiers: modifiers) {
+    func reregisterHotkey(_ slot: HotkeyManager.Slot, keyCode: UInt32, modifiers: UInt32) -> Bool {
+        HotkeyManager.shared.register(slot, keyCode: keyCode, modifiers: modifiers) {
             MainActor.assumeIsolated {
-                AppState.shared.capture(.region)
+                switch slot {
+                case .fullScreen: AppState.shared.capture(.fullScreen)
+                case .region: AppState.shared.capture(.region)
+                }
             }
         }
     }
@@ -189,15 +193,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         DebugLaunch.openIfRequested()
         #endif
 
-        let stored = hotkeys.storedBinding()
-        let registered = AppState.shared.reregisterHotkey(keyCode: stored.keyCode, modifiers: stored.modifiers)
-        if !registered {
-            NSLog("ZeroShot: could not register the global hotkey, another app may own it.")
+        for slot in HotkeyManager.Slot.allCases {
+            let stored = hotkeys.storedBinding(for: slot)
+            let registered = AppState.shared.reregisterHotkey(slot, keyCode: stored.keyCode, modifiers: stored.modifiers)
+            if !registered {
+                NSLog("ZeroShot: could not register the \(slot.label) hotkey, another app may own it.")
+            }
         }
     }
 
     func applicationWillTerminate(_ notification: Notification) {
-        hotkeys.unregister()
+        hotkeys.unregisterAll()
     }
 
     /// LSUIElement app: closing the last editor should not quit.

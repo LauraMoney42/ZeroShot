@@ -19,8 +19,11 @@
 //  `zoom` is document pixels per view point. 100% in the UI means one document
 //  pixel per PHYSICAL screen pixel, i.e. `zoom == 1 / backingScaleFactor`, so a
 //  2880x1800 Retina capture shows at 1440x900 points and is pixel-sharp.
-//  Cmd+1 is actual size, Cmd+9 is fit to window (Cmd+0 is the global capture
-//  hotkey and is deliberately left alone).
+//  Cmd+2 is actual size, Cmd+9 is fit to window. Cmd+0 and Cmd+1 are
+//  deliberately left alone: they are the two global capture hotkeys
+//  (Full Screen and Region), and Carbon fires those regardless of which
+//  window is key, so reusing either one here would double-fire a capture
+//  every time this view also handled it.
 //
 
 import AppKit
@@ -644,8 +647,10 @@ final class CanvasView: NSView {
             zoomOut()
             return true
 
-        case "1":
-            // Cmd+1 rather than Cmd+0: Cmd+0 is the global capture hotkey.
+        case "2":
+            // Cmd+2 rather than Cmd+0/Cmd+1: those are the two global capture
+            // hotkeys (Full Screen, Region), which fire from anywhere,
+            // including while this window is key.
             zoomToActualSize()
             return true
 

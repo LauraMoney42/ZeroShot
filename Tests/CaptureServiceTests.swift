@@ -5,7 +5,9 @@
 //  Everything here is non-interactive. The actual `capture(mode:)` call is NOT
 //  exercised: region and window modes need a human at the crosshair, and full
 //  screen mode would raise a Screen Recording permission dialog for the test
-//  host. What is tested is the plumbing either side of the subprocess.
+//  host. What is tested is the plumbing either side of the subprocess, plus
+//  the full-screen display-selection geometry, which is pure and does not
+//  touch Core Graphics' live display list.
 //
 
 import XCTest
@@ -34,7 +36,38 @@ final class CaptureServiceTests: XCTestCase {
     func testModeArguments() {
         XCTAssertEqual(CaptureMode.region.arguments, ["-i"])
         XCTAssertEqual(CaptureMode.window.arguments, ["-i", "-W"])
+        // Unused in practice (full screen bypasses the subprocess entirely,
+        // see testDisplayIDContainingPoint* below) but still a harmless,
+        // exhaustively-checked value.
         XCTAssertEqual(CaptureMode.fullScreen.arguments, [])
+    }
+
+    func testDisplayIDContainingPointPicksTheMatchingDisplay() {
+        // Two side-by-side displays, as in a laptop-plus-external setup:
+        // built-in at the origin, external starting where it ends.
+        let bounds: [CGDirectDisplayID: CGRect] = [
+            1: CGRect(x: 0, y: 0, width: 1440, height: 900),
+            2: CGRect(x: 1440, y: 0, width: 1920, height: 1080)
+        ]
+
+        XCTAssertEqual(CaptureService.displayID(containing: CGPoint(x: 100, y: 100), in: bounds), 1)
+        XCTAssertEqual(CaptureService.displayID(containing: CGPoint(x: 2000, y: 500), in: bounds), 2)
+        // Right on the seam: CGRect.contains is min-inclusive, so this pixel
+        // column belongs to the display starting there, not the one ending
+        // there.
+        XCTAssertEqual(CaptureService.displayID(containing: CGPoint(x: 1440, y: 0), in: bounds), 2)
+    }
+
+    func testDisplayIDContainingPointReturnsNilWhenPointerIsOffscreen() {
+        let bounds: [CGDirectDisplayID: CGRect] = [
+            1: CGRect(x: 0, y: 0, width: 1440, height: 900)
+        ]
+        XCTAssertNil(CaptureService.displayID(containing: CGPoint(x: -50, y: -50), in: bounds))
+        XCTAssertNil(CaptureService.displayID(containing: CGPoint(x: 5000, y: 5000), in: bounds))
+    }
+
+    func testDisplayIDContainingPointWithNoDisplaysReturnsNil() {
+        XCTAssertNil(CaptureService.displayID(containing: .zero, in: [:]))
     }
 
     func testTemporaryURLIsUniqueAndInAWritableDirectory() throws {

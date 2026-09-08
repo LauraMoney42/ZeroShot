@@ -48,9 +48,10 @@ struct GeneralPreferencesView: View {
     var body: some View {
         Form {
             Section {
-                HotkeyRecorderView()
+                HotkeyRecorderView(slot: .fullScreen)
+                HotkeyRecorderView(slot: .region)
             } header: {
-                Text("Capture Hotkey")
+                Text("Capture Hotkeys")
             }
 
             Section {
@@ -104,31 +105,36 @@ struct GeneralPreferencesView: View {
 // MARK: - Hotkey recorder
 
 /// Click to record: the next key combo with at least one modifier becomes the
-/// new hotkey, stored via HotkeyManager's existing UserDefaults keys and
-/// re-registered immediately so it takes effect without a relaunch.
+/// new hotkey for `slot`, stored via HotkeyManager's existing UserDefaults
+/// keys and re-registered immediately so it takes effect without a relaunch.
+/// One instance per slot; each keeps its own recording state so recording one
+/// hotkey does not disturb the other.
 struct HotkeyRecorderView: View {
+
+    let slot: HotkeyManager.Slot
 
     @State private var keyCode: UInt32
     @State private var modifiers: UInt32
     @State private var isRecording = false
     @State private var eventMonitor: Any?
 
-    init() {
-        let stored = HotkeyManager.shared.storedBinding()
+    init(slot: HotkeyManager.Slot) {
+        self.slot = slot
+        let stored = HotkeyManager.shared.storedBinding(for: slot)
         _keyCode = State(initialValue: stored.keyCode)
         _modifiers = State(initialValue: stored.modifiers)
     }
 
     var body: some View {
         HStack {
-            Text("Hotkey:")
+            Text("\(slot.label):")
             Button(isRecording ? "Press a key combo..." : HotkeyRecorderView.symbols(modifiers: modifiers, keyCode: keyCode)) {
                 startRecording()
             }
             .frame(minWidth: 130)
             .disabled(isRecording)
 
-            Button("Reset to \u{2318}0") {
+            Button("Reset to \(HotkeyRecorderView.symbols(modifiers: slot.defaultModifiers, keyCode: slot.defaultKeyCode))") {
                 reset()
             }
         }
@@ -168,13 +174,13 @@ struct HotkeyRecorderView: View {
     }
 
     private func reset() {
-        apply(keyCode: HotkeyManager.defaultKeyCode, modifiers: HotkeyManager.defaultModifiers)
+        apply(keyCode: slot.defaultKeyCode, modifiers: slot.defaultModifiers)
     }
 
     private func apply(keyCode: UInt32, modifiers: UInt32) {
         self.keyCode = keyCode
         self.modifiers = modifiers
-        if !AppState.shared.reregisterHotkey(keyCode: keyCode, modifiers: modifiers) {
+        if !AppState.shared.reregisterHotkey(slot, keyCode: keyCode, modifiers: modifiers) {
             NSLog("ZeroShot: could not register that hotkey, it may already be claimed by another app.")
         }
     }
