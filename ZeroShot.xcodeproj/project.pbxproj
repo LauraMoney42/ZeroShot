@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00A82103934B2B55FB355531 /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790D9EE935454CDF1458DF2 /* PreferencesWindow.swift */; };
+		0A30B8C2B9371AB1E524ABE1 /* ShapeCreationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B676D0F6DB5187D4F8E13 /* ShapeCreationTool.swift */; };
+		0EF8F82C8EFCA43CE67E3894 /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188991F6D269FB0823B65925 /* TestSupport.swift */; };
+		14A92DFC3F8322D07FFBEC17 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA91E4386AECDFBBFA6F586D /* CanvasView.swift */; };
+		181CCD2C2F5DCE5712500472 /* BadgeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFBC408D7636841A6E4367 /* BadgeTool.swift */; };
+		1E28F1C5F82B753F283741E4 /* AnnotationGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14A9EFAEFE1EB5783B8D6F /* AnnotationGeometry.swift */; };
+		2DE6642A001F045218BC1CA4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B52F365E1EF2D807C89E3 /* Annotation.swift */; };
+		361D858CFA6325D1623086E1 /* ExportToolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD35A38C2FCF78EFD6803E /* ExportToolbarItems.swift */; };
+		4EA155D176AF5343A212F005 /* Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8A37226F30F95856281363 /* Destinations.swift */; };
+		56998912DE46954A620F0318 /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE2079374F42A8F59FCD857 /* Exporter.swift */; };
+		6399E3C8F9D71CDADA509BB2 /* BlurTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9AE95B8D16E1BB30D7BE1D /* BlurTool.swift */; };
+		67E107DA38EE6B7EE5BCBE0E /* ExportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09D528E7E9F5C58777D323 /* ExportTests.swift */; };
+		77649C9F0B2FF12DABD9FACF /* WindowActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E86992184F48FCDC73FBD20 /* WindowActivation.swift */; };
+		77C5C0488EE57F26EB2D03D1 /* CanvasGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048425A35AC7FFD938A8B341 /* CanvasGeometryTests.swift */; };
+		80A332D7132D2CAD0E0D1DF7 /* EditorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1CF37C8F5F4CD948CEF37 /* EditorDocument.swift */; };
+		99034E1E53CD93CAFA193D10 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDACB2C7D69DC0A48DB59CE /* Preferences.swift */; };
+		9A0DF747E793DF6515480AB2 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C8A46EE75EEF4ADF521EC46 /* AppIcon.icns */; };
+		9DAA76C00235087947335E67 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655C0DE4FB09C45355503886 /* HotkeyManager.swift */; };
+		9EB072FCBB9DEF11B914BE70 /* PenTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7EC5657186A938B94B0B8 /* PenTool.swift */; };
+		A288AE141FB385007D0352FB /* RendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968BFAE21A59BD8A00285DD /* RendererTests.swift */; };
+		AFB8A5EB8733FA4B1326D086 /* EditorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC63A3FB516DF21DAC46E31C /* EditorWindow.swift */; };
+		B09AB1C65F635AA8EF514228 /* DebugLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCC020D4F7BB245F98DFEE /* DebugLaunch.swift */; };
+		B2BF687B0184F3E9F8F2DB75 /* ToolTests-M3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E975F1BB7E16967FFEE04 /* ToolTests-M3.swift */; };
+		BBF4B7F9DEF785B1D620C72C /* AnnotationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEB791D6C840E96E26CF94D /* AnnotationTests.swift */; };
+		C03BFBF7140189794C869C1A /* FilenamePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224E08F18A21185DD515471 /* FilenamePattern.swift */; };
+		C9511DA999C82C60A8904B04 /* CropTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259C787176592AE728881EB /* CropTool.swift */; };
+		CA50610E5D73A1C081F8C2D4 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FA69C67AE36AB2FCD9A16F /* Renderer.swift */; };
+		CD2067681D43A587498C7AAF /* TextTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0BA2B3C93F86FD8F71E9E /* TextTool.swift */; };
+		D5709E07E2022DA46939F146 /* CaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B19331505D5C59210821D1E /* CaptureService.swift */; };
+		E2404FA34627757592283113 /* SelectTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12079531251B0E42C8BD11B6 /* SelectTool.swift */; };
+		E944A8FE0C5376F301055691 /* HighlightTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4AA41703D23390E249D9D6 /* HighlightTool.swift */; };
+		ED5118BB35A265C2FB69D115 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4D559EE5898DEF3EABFE7 /* Tool.swift */; };
+		F1C68D2E3D350AE73BE41973 /* ToolTests-M4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935BD83F25F17CDD5F1FDB4 /* ToolTests-M4.swift */; };
+		F1D7BF080B433CB77E4DAB4D /* CaptureServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C734F1069100198BD684AD /* CaptureServiceTests.swift */; };
+		F97C98A9528981A7A320D077 /* ZeroShotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B024F9FE12E4A90D6C4960 /* ZeroShotApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF867D1246D7CAE633708907 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92A48237E6FF9CB2C0B036D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 666311677747E7B96BC17171;
+			remoteInfo = ZeroShot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		048425A35AC7FFD938A8B341 /* CanvasGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasGeometryTests.swift; sourceTree = "<group>"; };
+		06B971ADA10756E4ACBC35A1 /* ZeroShot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeroShot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0935BD83F25F17CDD5F1FDB4 /* ToolTests-M4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTests-M4.swift"; sourceTree = "<group>"; };
+		0B8A37226F30F95856281363 /* Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destinations.swift; sourceTree = "<group>"; };
+		12079531251B0E42C8BD11B6 /* SelectTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTool.swift; sourceTree = "<group>"; };
+		188991F6D269FB0823B65925 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
+		1968BFAE21A59BD8A00285DD /* RendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererTests.swift; sourceTree = "<group>"; };
+		1BDACB2C7D69DC0A48DB59CE /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		2F9AE95B8D16E1BB30D7BE1D /* BlurTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurTool.swift; sourceTree = "<group>"; };
+		3224E08F18A21185DD515471 /* FilenamePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilenamePattern.swift; sourceTree = "<group>"; };
+		3B19331505D5C59210821D1E /* CaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureService.swift; sourceTree = "<group>"; };
+		3E3B676D0F6DB5187D4F8E13 /* ShapeCreationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCreationTool.swift; sourceTree = "<group>"; };
+		4C8A46EE75EEF4ADF521EC46 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		558E8FFC0754E93EC1CD3712 /* ZeroShotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeroShotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FA69C67AE36AB2FCD9A16F /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		58DD35A38C2FCF78EFD6803E /* ExportToolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportToolbarItems.swift; sourceTree = "<group>"; };
+		5DCCC020D4F7BB245F98DFEE /* DebugLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLaunch.swift; sourceTree = "<group>"; };
+		5E4AA41703D23390E249D9D6 /* HighlightTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightTool.swift; sourceTree = "<group>"; };
+		6259C787176592AE728881EB /* CropTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropTool.swift; sourceTree = "<group>"; };
+		655C0DE4FB09C45355503886 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
+		6DEB791D6C840E96E26CF94D /* AnnotationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationTests.swift; sourceTree = "<group>"; };
+		70C7EC5657186A938B94B0B8 /* PenTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenTool.swift; sourceTree = "<group>"; };
+		738E975F1BB7E16967FFEE04 /* ToolTests-M3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolTests-M3.swift"; sourceTree = "<group>"; };
+		9E86992184F48FCDC73FBD20 /* WindowActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowActivation.swift; sourceTree = "<group>"; };
+		9EE2079374F42A8F59FCD857 /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
+		A6C734F1069100198BD684AD /* CaptureServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureServiceTests.swift; sourceTree = "<group>"; };
+		AADFBC408D7636841A6E4367 /* BadgeTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTool.swift; sourceTree = "<group>"; };
+		ABA4D559EE5898DEF3EABFE7 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		AD4B52F365E1EF2D807C89E3 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		AE09D528E7E9F5C58777D323 /* ExportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportTests.swift; sourceTree = "<group>"; };
+		BA91E4386AECDFBBFA6F586D /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		C790D9EE935454CDF1458DF2 /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
+		CC63A3FB516DF21DAC46E31C /* EditorWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorWindow.swift; sourceTree = "<group>"; };
+		E1B0BA2B3C93F86FD8F71E9E /* TextTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTool.swift; sourceTree = "<group>"; };
+		ED14A9EFAEFE1EB5783B8D6F /* AnnotationGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationGeometry.swift; sourceTree = "<group>"; };
+		F6B024F9FE12E4A90D6C4960 /* ZeroShotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroShotApp.swift; sourceTree = "<group>"; };
+		F7D1CF37C8F5F4CD948CEF37 /* EditorDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDocument.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		010BA982EA8F9F0D49425F0C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6DEB791D6C840E96E26CF94D /* AnnotationTests.swift */,
+				048425A35AC7FFD938A8B341 /* CanvasGeometryTests.swift */,
+				A6C734F1069100198BD684AD /* CaptureServiceTests.swift */,
+				AE09D528E7E9F5C58777D323 /* ExportTests.swift */,
+				1968BFAE21A59BD8A00285DD /* RendererTests.swift */,
+				188991F6D269FB0823B65925 /* TestSupport.swift */,
+				738E975F1BB7E16967FFEE04 /* ToolTests-M3.swift */,
+				0935BD83F25F17CDD5F1FDB4 /* ToolTests-M4.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		0709AC5948EA7B5E640B2C36 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06B971ADA10756E4ACBC35A1 /* ZeroShot.app */,
+				558E8FFC0754E93EC1CD3712 /* ZeroShotTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14E5C8BD20C4B453FF01DF1A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3B19331505D5C59210821D1E /* CaptureService.swift */,
+				655C0DE4FB09C45355503886 /* HotkeyManager.swift */,
+				1BDACB2C7D69DC0A48DB59CE /* Preferences.swift */,
+				9E86992184F48FCDC73FBD20 /* WindowActivation.swift */,
+				F6B024F9FE12E4A90D6C4960 /* ZeroShotApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1D513D276B96143CCA9A80B2 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				0B8A37226F30F95856281363 /* Destinations.swift */,
+				9EE2079374F42A8F59FCD857 /* Exporter.swift */,
+				58DD35A38C2FCF78EFD6803E /* ExportToolbarItems.swift */,
+				3224E08F18A21185DD515471 /* FilenamePattern.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		3502B21698DAB4734A44E4C9 = {
+			isa = PBXGroup;
+			children = (
+				AF7B0B3BA91206BF5E430362 /* Resources */,
+				944C7677A8AB359A05E4729B /* Sources */,
+				010BA982EA8F9F0D49425F0C /* Tests */,
+				0709AC5948EA7B5E640B2C36 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		944C7677A8AB359A05E4729B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				14E5C8BD20C4B453FF01DF1A /* App */,
+				E3F2DCCD3211F2C3A60F6E38 /* Editor */,
+				1D513D276B96143CCA9A80B2 /* Export */,
+				A547EB0E9DCA96BE5AA1FACF /* Preferences */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A0A1C47CFF450B00C2B9DC4C /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				ED14A9EFAEFE1EB5783B8D6F /* AnnotationGeometry.swift */,
+				AADFBC408D7636841A6E4367 /* BadgeTool.swift */,
+				2F9AE95B8D16E1BB30D7BE1D /* BlurTool.swift */,
+				6259C787176592AE728881EB /* CropTool.swift */,
+				5E4AA41703D23390E249D9D6 /* HighlightTool.swift */,
+				70C7EC5657186A938B94B0B8 /* PenTool.swift */,
+				12079531251B0E42C8BD11B6 /* SelectTool.swift */,
+				3E3B676D0F6DB5187D4F8E13 /* ShapeCreationTool.swift */,
+				E1B0BA2B3C93F86FD8F71E9E /* TextTool.swift */,
+				ABA4D559EE5898DEF3EABFE7 /* Tool.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		A547EB0E9DCA96BE5AA1FACF /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				C790D9EE935454CDF1458DF2 /* PreferencesWindow.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		AF7B0B3BA91206BF5E430362 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4C8A46EE75EEF4ADF521EC46 /* AppIcon.icns */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E3F2DCCD3211F2C3A60F6E38 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				A0A1C47CFF450B00C2B9DC4C /* Tools */,
+				AD4B52F365E1EF2D807C89E3 /* Annotation.swift */,
+				BA91E4386AECDFBBFA6F586D /* CanvasView.swift */,
+				5DCCC020D4F7BB245F98DFEE /* DebugLaunch.swift */,
+				F7D1CF37C8F5F4CD948CEF37 /* EditorDocument.swift */,
+				CC63A3FB516DF21DAC46E31C /* EditorWindow.swift */,
+				56FA69C67AE36AB2FCD9A16F /* Renderer.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		666311677747E7B96BC17171 /* ZeroShot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8B49667D086B43C40C242A1 /* Build configuration list for PBXNativeTarget "ZeroShot" */;
+			buildPhases = (
+				D2E1A83E92B486E228AE4800 /* Sources */,
+				05FB0D6A2618F72A8D87FABF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZeroShot;
+			packageProductDependencies = (
+			);
+			productName = ZeroShot;
+			productReference = 06B971ADA10756E4ACBC35A1 /* ZeroShot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC0F245B3A41659CC05FC2F1 /* ZeroShotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 258C72C9DD9252C3340AA768 /* Build configuration list for PBXNativeTarget "ZeroShotTests" */;
+			buildPhases = (
+				2BCCC9FDFE208F04E7A8CE14 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C952BD9D8CC618A7D3D1C80 /* PBXTargetDependency */,
+			);
+			name = ZeroShotTests;
+			packageProductDependencies = (
+			);
+			productName = ZeroShotTests;
+			productReference = 558E8FFC0754E93EC1CD3712 /* ZeroShotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92A48237E6FF9CB2C0B036D3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					666311677747E7B96BC17171 = {
+						DevelopmentTeam = G6U69FC9H3;
+						ProvisioningStyle = Automatic;
+					};
+					CC0F245B3A41659CC05FC2F1 = {
+						DevelopmentTeam = G6U69FC9H3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 63DB3372FDDD4AAF1530B9B8 /* Build configuration list for PBXProject "ZeroShot" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 3502B21698DAB4734A44E4C9;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0709AC5948EA7B5E640B2C36 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				666311677747E7B96BC17171 /* ZeroShot */,
+				CC0F245B3A41659CC05FC2F1 /* ZeroShotTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05FB0D6A2618F72A8D87FABF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0DF747E793DF6515480AB2 /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BCCC9FDFE208F04E7A8CE14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBF4B7F9DEF785B1D620C72C /* AnnotationTests.swift in Sources */,
+				77C5C0488EE57F26EB2D03D1 /* CanvasGeometryTests.swift in Sources */,
+				F1D7BF080B433CB77E4DAB4D /* CaptureServiceTests.swift in Sources */,
+				67E107DA38EE6B7EE5BCBE0E /* ExportTests.swift in Sources */,
+				A288AE141FB385007D0352FB /* RendererTests.swift in Sources */,
+				0EF8F82C8EFCA43CE67E3894 /* TestSupport.swift in Sources */,
+				B2BF687B0184F3E9F8F2DB75 /* ToolTests-M3.swift in Sources */,
+				F1C68D2E3D350AE73BE41973 /* ToolTests-M4.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2E1A83E92B486E228AE4800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DE6642A001F045218BC1CA4 /* Annotation.swift in Sources */,
+				1E28F1C5F82B753F283741E4 /* AnnotationGeometry.swift in Sources */,
+				181CCD2C2F5DCE5712500472 /* BadgeTool.swift in Sources */,
+				6399E3C8F9D71CDADA509BB2 /* BlurTool.swift in Sources */,
+				14A92DFC3F8322D07FFBEC17 /* CanvasView.swift in Sources */,
+				D5709E07E2022DA46939F146 /* CaptureService.swift in Sources */,
+				C9511DA999C82C60A8904B04 /* CropTool.swift in Sources */,
+				B09AB1C65F635AA8EF514228 /* DebugLaunch.swift in Sources */,
+				4EA155D176AF5343A212F005 /* Destinations.swift in Sources */,
+				80A332D7132D2CAD0E0D1DF7 /* EditorDocument.swift in Sources */,
+				AFB8A5EB8733FA4B1326D086 /* EditorWindow.swift in Sources */,
+				361D858CFA6325D1623086E1 /* ExportToolbarItems.swift in Sources */,
+				56998912DE46954A620F0318 /* Exporter.swift in Sources */,
+				C03BFBF7140189794C869C1A /* FilenamePattern.swift in Sources */,
+				E944A8FE0C5376F301055691 /* HighlightTool.swift in Sources */,
+				9DAA76C00235087947335E67 /* HotkeyManager.swift in Sources */,
+				9EB072FCBB9DEF11B914BE70 /* PenTool.swift in Sources */,
+				99034E1E53CD93CAFA193D10 /* Preferences.swift in Sources */,
+				00A82103934B2B55FB355531 /* PreferencesWindow.swift in Sources */,
+				CA50610E5D73A1C081F8C2D4 /* Renderer.swift in Sources */,
+				E2404FA34627757592283113 /* SelectTool.swift in Sources */,
+				0A30B8C2B9371AB1E524ABE1 /* ShapeCreationTool.swift in Sources */,
+				CD2067681D43A587498C7AAF /* TextTool.swift in Sources */,
+				ED5118BB35A265C2FB69D115 /* Tool.swift in Sources */,
+				77649C9F0B2FF12DABD9FACF /* WindowActivation.swift in Sources */,
+				F97C98A9528981A7A320D077 /* ZeroShotApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5C952BD9D8CC618A7D3D1C80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 666311677747E7B96BC17171 /* ZeroShot */;
+			targetProxy = FF867D1246D7CAE633708907 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4AB22E065E060803BBCE4DE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = NO;
+				INFOPLIST_FILE = Support/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = us.kindcode.zeroshot;
+				PRODUCT_NAME = ZeroShot;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5A9AAC6F4897116CE4723D4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = us.kindcode.zeroshot.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZeroShot.app/Contents/MacOS/ZeroShot";
+			};
+			name = Debug;
+		};
+		A3937E4E4226824C035FD530 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = us.kindcode.zeroshot.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZeroShot.app/Contents/MacOS/ZeroShot";
+			};
+			name = Release;
+		};
+		A6EC875013F403FAC8172018 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = NO;
+				INFOPLIST_FILE = Support/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = us.kindcode.zeroshot;
+				PRODUCT_NAME = ZeroShot;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D2F6F0760DD22343FD26C9BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = G6U69FC9H3;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E55FC7FE8EF78B7FE1F5D589 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = G6U69FC9H3;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		258C72C9DD9252C3340AA768 /* Build configuration list for PBXNativeTarget "ZeroShotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A9AAC6F4897116CE4723D4D /* Debug */,
+				A3937E4E4226824C035FD530 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		63DB3372FDDD4AAF1530B9B8 /* Build configuration list for PBXProject "ZeroShot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2F6F0760DD22343FD26C9BD /* Debug */,
+				E55FC7FE8EF78B7FE1F5D589 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B8B49667D086B43C40C242A1 /* Build configuration list for PBXNativeTarget "ZeroShot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6EC875013F403FAC8172018 /* Debug */,
+				4AB22E065E060803BBCE4DE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 92A48237E6FF9CB2C0B036D3 /* Project object */;
+}
