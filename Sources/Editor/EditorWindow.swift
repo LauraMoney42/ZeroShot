@@ -214,11 +214,27 @@ struct EditorToolbar: View {
                 Button {
                     settings.toolKind = kind
                 } label: {
-                    Image(systemName: kind.symbolName)
-                        .frame(width: 24, height: 22)
-                        .background(isActive ? Color.accentColor.opacity(0.25) : Color.clear,
-                                    in: RoundedRectangle(cornerRadius: 5))
-                        .foregroundStyle(isReady ? Color.primary : Color.secondary)
+                    Group {
+                        if kind == .highlight {
+                            // This glyph has two layers: the pen outline and
+                            // its mark stroke. `.multicolor` renders it flat
+                            // (the symbol has no built-in multicolor
+                            // palette), so the two layers are colored by
+                            // hand instead: primary for the pen, yellow for
+                            // the stroke it leaves -- the part that actually
+                            // reads as "highlighter" rather than "pen".
+                            Image(systemName: kind.symbolName)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(isReady ? Color.primary : Color.secondary,
+                                                 Color.yellow.opacity(isReady ? 1 : 0.4))
+                        } else {
+                            Image(systemName: kind.symbolName)
+                                .foregroundStyle(isReady ? Color.primary : Color.secondary)
+                        }
+                    }
+                    .frame(width: 24, height: 22)
+                    .background(isActive ? Color.accentColor.opacity(0.25) : Color.clear,
+                                in: RoundedRectangle(cornerRadius: 5))
                 }
                 .buttonStyle(.borderless)
                 .help(isReady

@@ -156,3 +156,8 @@
 - App icon redesigned around a highlighter pen (yellow barrel, dark cap, chisel tip, translucent mark stroke) on the same brand gradient, replacing the earlier camera+"0" design
 - Toolbar tool labels for the numeric keypad (Keypad 0-9, Keypad Enter, Keypad Clear) so a hotkey bound to a keypad key shows clearly instead of "Key 82"
 - Files affected: Scripts/make-icon.swift, Resources/AppIcon.icns, Sources/Preferences/PreferencesWindow.swift
+
+## 2026-09-08 17:10
+- Reverted the app icon back to the camera-shutter design (0188... redesign was a misread of the request)
+- Fixed the actual ask: the highlighter tool's toolbar icon now renders with its mark stroke in yellow (SwiftUI palette rendering with two explicit colors), instead of flat white, which is what made it read as a plain pencil. Every other toolbar icon is unchanged.
+- Files affected: Resources/AppIcon.icns, Scripts/make-icon.swift, Sources/Editor/EditorWindow.swift, CHANGELOG.md
