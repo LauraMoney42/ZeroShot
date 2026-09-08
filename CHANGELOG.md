@@ -151,3 +151,8 @@
 - project.yml Release now sets CODE_SIGNING_ALLOWED: NO -- Xcode's own "Manual" signing style always injects the com.apple.security.get-task-allow entitlement when there is no provisioning profile (which Developer ID builds never have), and that entitlement is exactly what notarization rejects. Signing by hand in notarize.sh with an explicit empty entitlements file avoids it.
 - New Resources/ZeroShotRelease.entitlements: an empty entitlements file for the Release signature
 - Files affected: project.yml, Scripts/notarize.sh, Resources/ZeroShotRelease.entitlements, CHANGELOG.md
+
+## 2026-09-08 13:45
+- App icon redesigned around a highlighter pen (yellow barrel, dark cap, chisel tip, translucent mark stroke) on the same brand gradient, replacing the earlier camera+"0" design
+- Toolbar tool labels for the numeric keypad (Keypad 0-9, Keypad Enter, Keypad Clear) so a hotkey bound to a keypad key shows clearly instead of "Key 82"
+- Files affected: Scripts/make-icon.swift, Resources/AppIcon.icns, Sources/Preferences/PreferencesWindow.swift

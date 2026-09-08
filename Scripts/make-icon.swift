@@ -6,9 +6,10 @@
 //  Draws the app icon with Core Graphics (no image assets, no Xcode asset
 //  catalog needed) and builds Resources/AppIcon.icns from it.
 //
-//  Design: rounded-square background, dark blue to teal gradient, a white
-//  camera-shutter style ring, and a bold white "0" in the center, tying the
-//  icon to the Cmd+0 capture hotkey.
+//  Design: rounded-square background, dark blue to teal gradient (same as
+//  before, for continuity), with a yellow highlighter pen drawn diagonally
+//  over a translucent highlight stroke -- the app's own highlighter tool,
+//  since that is the shape most people reach for first.
 //
 //  Run with: swift Scripts/make-icon.swift
 //  (from the project root; it writes into ./Resources)
@@ -81,61 +82,74 @@ func drawIcon(pixels: Int) -> CGImage? {
     ctx.fillEllipse(in: CGRect(x: size * 0.05, y: -size * 0.35, width: size * 0.9, height: size * 0.9))
     ctx.restoreGState()
 
-    // MARK: Camera-shutter style ring.
+    // MARK: Highlighter pen, drawn diagonally (tip lower-left, cap
+    // upper-right), the same way the SF Symbol and the in-app tool read.
     let center = CGPoint(x: size / 2, y: size / 2)
-    let ringRadius = size * 0.335
-    let ringWidth = size * 0.052
-    ctx.saveGState()
-    ctx.setStrokeColor(CGColor(red: 1, green: 1, blue: 1, alpha: 0.92))
-    ctx.setLineWidth(ringWidth)
-    ctx.setLineCap(.round)
-    ctx.addArc(center: center, radius: ringRadius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
-    ctx.strokePath()
+    let angle = -45 * CGFloat.pi / 180
 
-    // Shutter "blade" notches around the ring, evenly spaced, to read as a
-    // camera shutter rather than a plain circle.
-    let notchCount = 8
-    let notchLength = size * 0.075
-    let notchWidth = size * 0.02
-    for index in 0..<notchCount {
-        let angle = (CGFloat(index) / CGFloat(notchCount)) * .pi * 2
-        let inner = CGPoint(x: center.x + cos(angle) * (ringRadius - ringWidth / 2 - notchLength / 2),
-                            y: center.y + sin(angle) * (ringRadius - ringWidth / 2 - notchLength / 2))
-        ctx.saveGState()
-        ctx.translateBy(x: inner.x, y: inner.y)
-        ctx.rotate(by: angle)
-        ctx.setFillColor(CGColor(red: 1, green: 1, blue: 1, alpha: 0.55))
-        let notchRect = CGRect(x: -notchLength / 2, y: -notchWidth / 2, width: notchLength, height: notchWidth)
-        ctx.fill(notchRect)
-        ctx.restoreGState()
-    }
+    // The translucent mark the highlighter leaves behind, drawn first so the
+    // pen sits on top of it. Offset below the pen's own axis, the way an
+    // underline sits below a word.
+    ctx.saveGState()
+    ctx.translateBy(x: center.x, y: center.y)
+    ctx.rotate(by: angle)
+    let markWidth = size * 0.46
+    let markHeight = size * 0.105
+    let markRect = CGRect(x: -markWidth * 0.42, y: size * 0.10, width: markWidth, height: markHeight)
+    ctx.addPath(CGPath(roundedRect: markRect, cornerWidth: markHeight / 2, cornerHeight: markHeight / 2, transform: nil))
+    ctx.setFillColor(CGColor(red: 1.0, green: 0.85, blue: 0.15, alpha: 0.55))
+    ctx.fillPath()
     ctx.restoreGState()
 
-    // MARK: Bold white "0" in the center (ties to the Cmd+0 hotkey).
-    let font = NSFont.systemFont(ofSize: size * 0.42, weight: .heavy)
-    let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.alignment = .center
-    let attributes: [NSAttributedString.Key: Any] = [
-        .font: font,
-        .foregroundColor: NSColor.white,
-        .paragraphStyle: paragraphStyle
-    ]
-    let text = NSAttributedString(string: "0", attributes: attributes)
-    let line = CTLineCreateWithAttributedString(text)
-    let bounds = CTLineGetBoundsWithOptions(line, .useOpticalBounds)
-
-    NSGraphicsContext.saveGraphicsState()
-    let nsContext = NSGraphicsContext(cgContext: ctx, flipped: true)
-    NSGraphicsContext.current = nsContext
+    // The barrel: a yellow capsule, most of the pen's length.
     ctx.saveGState()
-    ctx.translateBy(x: 0, y: size)
-    ctx.scaleBy(x: 1, y: -1)
-    let textOrigin = CGPoint(x: center.x - bounds.width / 2 - bounds.origin.x,
-                             y: size - (center.y + bounds.height / 2 + bounds.origin.y))
-    ctx.textPosition = textOrigin
-    CTLineDraw(line, ctx)
+    ctx.translateBy(x: center.x, y: center.y)
+    ctx.rotate(by: angle)
+    let barrelLength = size * 0.62
+    let barrelWidth = size * 0.165
+    let barrelRect = CGRect(x: -barrelLength / 2, y: -barrelWidth / 2, width: barrelLength, height: barrelWidth)
+    let barrelPath = CGPath(roundedRect: barrelRect, cornerWidth: barrelWidth * 0.4, cornerHeight: barrelWidth * 0.4, transform: nil)
+    ctx.addPath(barrelPath)
+    ctx.setFillColor(CGColor(red: 1.0, green: 0.82, blue: 0.0, alpha: 1.0))
+    ctx.fillPath()
+
+    // A thin highlight along the top edge of the barrel, for a rounded,
+    // dimensional look rather than a flat bar.
+    ctx.addPath(barrelPath)
+    ctx.clip()
+    ctx.setFillColor(CGColor(red: 1, green: 1, blue: 1, alpha: 0.22))
+    ctx.fill(CGRect(x: -barrelLength / 2, y: barrelWidth * 0.08, width: barrelLength, height: barrelWidth * 0.22))
     ctx.restoreGState()
-    NSGraphicsContext.restoreGraphicsState()
+
+    // The cap: a dark charcoal band at the upper-right end of the barrel.
+    ctx.saveGState()
+    ctx.translateBy(x: center.x, y: center.y)
+    ctx.rotate(by: angle)
+    let capLength = barrelLength * 0.30
+    let capRect = CGRect(x: barrelLength / 2 - capLength, y: -barrelWidth / 2, width: capLength, height: barrelWidth)
+    ctx.addPath(barrelPath)
+    ctx.clip()
+    ctx.setFillColor(CGColor(red: 0.16, green: 0.18, blue: 0.22, alpha: 1.0))
+    ctx.fill(capRect)
+    ctx.restoreGState()
+
+    // The nib: a pale chisel tip at the lower-left end, angled to a point so
+    // it reads as the business end of a highlighter, not just a rod.
+    ctx.saveGState()
+    ctx.translateBy(x: center.x, y: center.y)
+    ctx.rotate(by: angle)
+    let nibLength = size * 0.11
+    let nibBaseX = -barrelLength / 2
+    let nib = CGMutablePath()
+    nib.move(to: CGPoint(x: nibBaseX, y: -barrelWidth / 2))
+    nib.addLine(to: CGPoint(x: nibBaseX, y: barrelWidth / 2))
+    nib.addLine(to: CGPoint(x: nibBaseX - nibLength, y: barrelWidth * 0.12))
+    nib.addLine(to: CGPoint(x: nibBaseX - nibLength * 1.15, y: -barrelWidth * 0.12))
+    nib.closeSubpath()
+    ctx.addPath(nib)
+    ctx.setFillColor(CGColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0))
+    ctx.fillPath()
+    ctx.restoreGState()
 
     return ctx.makeImage()
 }

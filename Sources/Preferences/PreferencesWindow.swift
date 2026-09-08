@@ -226,7 +226,17 @@ struct HotkeyRecorderView: View {
         UInt32(kVK_UpArrow): "\u{2191}", UInt32(kVK_DownArrow): "\u{2193}",
         UInt32(kVK_F1): "F1", UInt32(kVK_F2): "F2", UInt32(kVK_F3): "F3", UInt32(kVK_F4): "F4",
         UInt32(kVK_F5): "F5", UInt32(kVK_F6): "F6", UInt32(kVK_F7): "F7", UInt32(kVK_F8): "F8",
-        UInt32(kVK_F9): "F9", UInt32(kVK_F10): "F10", UInt32(kVK_F11): "F11", UInt32(kVK_F12): "F12"
+        UInt32(kVK_F9): "F9", UInt32(kVK_F10): "F10", UInt32(kVK_F11): "F11", UInt32(kVK_F12): "F12",
+        // The numeric keypad sends its own key codes, distinct from the
+        // number row (kVK_ANSI_0 vs kVK_ANSI_Keypad0), so a hotkey can be
+        // bound to either without colliding with the other. Labeled
+        // separately here so the two don't look identical in the recorder.
+        UInt32(kVK_ANSI_Keypad0): "Keypad 0", UInt32(kVK_ANSI_Keypad1): "Keypad 1",
+        UInt32(kVK_ANSI_Keypad2): "Keypad 2", UInt32(kVK_ANSI_Keypad3): "Keypad 3",
+        UInt32(kVK_ANSI_Keypad4): "Keypad 4", UInt32(kVK_ANSI_Keypad5): "Keypad 5",
+        UInt32(kVK_ANSI_Keypad6): "Keypad 6", UInt32(kVK_ANSI_Keypad7): "Keypad 7",
+        UInt32(kVK_ANSI_Keypad8): "Keypad 8", UInt32(kVK_ANSI_Keypad9): "Keypad 9",
+        UInt32(kVK_ANSI_KeypadEnter): "Keypad Enter", UInt32(kVK_ANSI_KeypadClear): "Keypad Clear"
     ]
 }
 
