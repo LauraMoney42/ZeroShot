@@ -38,6 +38,7 @@
 		D5709E07E2022DA46939F146 /* CaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B19331505D5C59210821D1E /* CaptureService.swift */; };
 		E2404FA34627757592283113 /* SelectTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12079531251B0E42C8BD11B6 /* SelectTool.swift */; };
 		E944A8FE0C5376F301055691 /* HighlightTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4AA41703D23390E249D9D6 /* HighlightTool.swift */; };
+		EC633FDA650E23666518802E /* ZeroShotRelease.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 5E970EFF4BFD79BEEB60CF90 /* ZeroShotRelease.entitlements */; };
 		ED5118BB35A265C2FB69D115 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4D559EE5898DEF3EABFE7 /* Tool.swift */; };
 		F1C68D2E3D350AE73BE41973 /* ToolTests-M4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935BD83F25F17CDD5F1FDB4 /* ToolTests-M4.swift */; };
 		F1D7BF080B433CB77E4DAB4D /* CaptureServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C734F1069100198BD684AD /* CaptureServiceTests.swift */; };
@@ -73,6 +74,7 @@
 		58DD35A38C2FCF78EFD6803E /* ExportToolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportToolbarItems.swift; sourceTree = "<group>"; };
 		5DCCC020D4F7BB245F98DFEE /* DebugLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLaunch.swift; sourceTree = "<group>"; };
 		5E4AA41703D23390E249D9D6 /* HighlightTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightTool.swift; sourceTree = "<group>"; };
+		5E970EFF4BFD79BEEB60CF90 /* ZeroShotRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZeroShotRelease.entitlements; sourceTree = "<group>"; };
 		6259C787176592AE728881EB /* CropTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropTool.swift; sourceTree = "<group>"; };
 		655C0DE4FB09C45355503886 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
 		6DEB791D6C840E96E26CF94D /* AnnotationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationTests.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				4C8A46EE75EEF4ADF521EC46 /* AppIcon.icns */,
+				5E970EFF4BFD79BEEB60CF90 /* ZeroShotRelease.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A0DF747E793DF6515480AB2 /* AppIcon.icns in Resources */,
+				EC633FDA650E23666518802E /* ZeroShotRelease.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +535,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;

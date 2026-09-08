@@ -32,6 +32,15 @@ settings:
     Release:
       ENABLE_TESTABILITY: NO
       SWIFT_OPTIMIZATION_LEVEL: "-O"
+      # Distribution outside the App Store is signed by hand after the build
+      # (see Scripts/notarize.sh), not through Xcode's own CodeSign step.
+      # Xcode's "Manual" style always injects the com.apple.security.get-
+      # task-allow entitlement when there is no provisioning profile, which
+      # is exactly the debug-only flag Apple's notary service rejects, and
+      # there is no supported setting that turns it off. The app has no
+      # embedded frameworks (Swift's runtime is provided by macOS 15+), so
+      # there is nothing else in the bundle that needs signing.
+      CODE_SIGNING_ALLOWED: NO
 
 targets:
   ZeroShot:

@@ -144,3 +144,10 @@
 - Added 3 tests for the display-selection geometry (Tests/CaptureServiceTests.swift): matching display, offscreen pointer, empty display list
 - Fixed after a real xcodebuild test run caught the CGDisplayCreateImage unavailability above; rebuild pending confirmation
 - Files affected: Sources/App/HotkeyManager.swift, Sources/App/ZeroShotApp.swift, Sources/App/CaptureService.swift, Sources/Preferences/PreferencesWindow.swift, Sources/Editor/CanvasView.swift, Tests/CaptureServiceTests.swift, README.md, PROJECT_OVERVIEW.md, CHANGELOG.md
+
+## 2026-09-08 13:25
+- Real distribution: obtained a Developer ID Application certificate from the Apple Developer account and set up notarization
+- New Scripts/notarize.sh: builds Release, signs by hand with the Developer ID cert (hardened runtime, secure timestamp, empty entitlements), packages a dmg, signs the dmg itself, submits it to Apple's notary service, staples the ticket to the dmg. Result opens on any Mac with zero Gatekeeper warnings, no right-click-Open needed.
+- project.yml Release now sets CODE_SIGNING_ALLOWED: NO -- Xcode's own "Manual" signing style always injects the com.apple.security.get-task-allow entitlement when there is no provisioning profile (which Developer ID builds never have), and that entitlement is exactly what notarization rejects. Signing by hand in notarize.sh with an explicit empty entitlements file avoids it.
+- New Resources/ZeroShotRelease.entitlements: an empty entitlements file for the Release signature
+- Files affected: project.yml, Scripts/notarize.sh, Resources/ZeroShotRelease.entitlements, CHANGELOG.md
